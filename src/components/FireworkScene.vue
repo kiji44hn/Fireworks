@@ -1,7 +1,7 @@
 <template>
   <div 
     ref="fireworkContainer"
-    class="firework-container w-full h-full bg-gradient-to-b from-gray-900 to-black"
+    class="firework-container"
   />
 </template>
 
@@ -72,3 +72,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.firework-container {
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #111, #000); /* 背景を黒に */
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="memory-container flex flex-col items-center gap-6 py-6">
+  <div class="memory-container">
     <img
       v-for="(image, index) in images"
       :key="index"
@@ -17,7 +17,7 @@ import { gsap } from "gsap";
 export default defineComponent({
   name: "MemoryScene",
   setup() {
-    const images = ref(["image1.png", "image2.png", "image3.png"]);
+    const images = ref(["/matsuri-hanabi.png"]);
 
     onMounted(() => {
       gsap.fromTo(
@@ -33,3 +33,18 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.memory-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.memory-image {
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+</style>

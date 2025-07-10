@@ -1,5 +1,5 @@
 <template>
-  <div class="text-overlay text-center absolute inset-0 flex flex-col items-center justify-center text-white text-2xl opacity-0">
+  <div class="text-overlay">
     <p>願いを込めて</p>
     <p>いつまでも続く風景</p>
   </div>
@@ -22,3 +22,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  color: #ffffff;
+}
+</style>
