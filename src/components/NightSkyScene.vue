@@ -8,10 +8,9 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import * as THREE from "three";
-import { gsap } from "gsap";
 
 export default defineComponent({
-  name: "NightskyScene",
+  name: "NightSkyScene",
   setup() {
     const nightskyContainer = ref<HTMLDivElement | null>(null);
 
@@ -24,38 +23,58 @@ export default defineComponent({
         0.1,
         1000
       );
-      camera.position.z = 10;
+      camera.position.z = 20; // カメラの調整で星全体を確認しやすく
 
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
 
-      // 花火の粒子設定
+      // 星々を小さな丸で表現
       const geometry = new THREE.BufferGeometry();
-      const particleCount = 300;
+      const particleCount = 800; // 星の数を増やして密度を高める
       const positions = new Float32Array(particleCount * 3);
-      for (let i = 0; i < positions.length; i++) {
-        positions[i] = (Math.random() - 0.5) * 10;
-      }
-      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const sizes = new Float32Array(particleCount);
 
-      const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 100; // X座標をランダム化
+        positions[i * 3 + 1] = Math.random() * -50; // Y座標（下から上へ）
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 100; // Z座標をランダム化
+        sizes[i] = Math.random() * 0.5 + 0.2; // 星をより小さく
+      }
+
+      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+
+      const material = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.3, // 星の大きさを小さく統一
+        sizeAttenuation: true,
+      });
+
       const particles = new THREE.Points(geometry, material);
       scene.add(particles);
 
-      // GSAPアニメーション
-      gsap.to(particles.position, { y: 5, duration: 2 });
-      gsap.to(particles.scale, {
-        x: 3,
-        y: 3,
-        z: 3,
-        duration: 1,
-        delay: 2,
-      });
+      // 下から上に移動させるアニメーション
+      const animateParticles = () => {
+        const positions = geometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+          positions[i * 3 + 1] += 0.05; // ゆっくりと上昇
 
+          // 上端を越えたら下端に戻す
+          if (positions[i * 3 + 1] > 50) {
+            positions[i * 3] = (Math.random() - 0.5) * 100; // 新たなX座標
+            positions[i * 3 + 1] = Math.random() * -50; // 新たなY座標
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 100; // 新たなZ座標
+          }
+        }
+        geometry.attributes.position.needsUpdate = true; // 更新を通知
+      };
+
+      // レンダリングループ
       const animate = () => {
-        requestAnimationFrame(animate);
+        animateParticles(); // 星のアニメーションを適用
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
       };
       animate();
 
@@ -66,9 +85,7 @@ export default defineComponent({
       });
     });
 
-    return {
-      nightskyContainer,
-    };
+    return { nightskyContainer };
   },
 });
 </script>
@@ -77,6 +94,6 @@ export default defineComponent({
 .nightsky-container {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle, #111, #000); /* 背景を黒に */
+  background: radial-gradient(circle, #111, #000); /* 優しい背景色 */
 }
 </style>

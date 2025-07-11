@@ -1,16 +1,12 @@
 <template>
-  <div 
-    ref="fireworkContainer"
-    class="firework-container relative"
-  >
-    <!-- 動画を背景として表示 -->
+  <div class="firework-container relative">
     <video 
-      autoplay 
-      loop 
+      autoplay
+      loop
       playsinline 
       class="absolute top-0 left-0 w-full h-full object-cover"
     >
-      <source 
+      <source
         src="/hanabi.mp4"
         type="video/mp4"
       >
@@ -20,57 +16,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import * as THREE from "three";
-
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "FireworkScene",
-  setup() {
-    const fireworkContainer = ref<HTMLDivElement | null>(null);
-
-    onMounted(() => {
-      const container = fireworkContainer.value!;
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        1000
-      );
-      camera.position.z = 10;
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
-
-      // Three.jsのエフェクト
-      const geometry = new THREE.BufferGeometry();
-      const particleCount = 300;
-      const positions = new Float32Array(particleCount * 3);
-      for (let i = 0; i < positions.length; i++) {
-        positions[i] = (Math.random() - 0.5) * 10;
-      }
-      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-      const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
-      const particles = new THREE.Points(geometry, material);
-      scene.add(particles);
-
-      const animate = () => {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      };
-      animate();
-
-      window.addEventListener("resize", () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
-    });
-
-    return { fireworkContainer };
-  },
 });
 </script>
 
@@ -78,6 +26,5 @@ export default defineComponent({
 .firework-container {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle, #111, #000);
 }
 </style>
