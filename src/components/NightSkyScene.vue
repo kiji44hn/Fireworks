@@ -31,7 +31,7 @@ export default defineComponent({
 
       // 星々を小さな丸で表現
       const geometry = new THREE.BufferGeometry();
-      const particleCount = 800; // 星の数を増やして密度を高める
+      const particleCount = 1000; // 星の数を増やして密度を高める
       const positions = new Float32Array(particleCount * 3);
       const sizes = new Float32Array(particleCount);
 
@@ -47,7 +47,7 @@ export default defineComponent({
 
       const material = new THREE.PointsMaterial({
         color: 0xffffff,
-        size: 0.3, // 星の大きさを小さく統一
+        size: 0.1, // 星の大きさを小さく統一
         sizeAttenuation: true,
       });
 
