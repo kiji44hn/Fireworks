@@ -1,17 +1,22 @@
 <template>
-  <div 
-    ref="fireworkContainer"
-    class="firework-container"
-  />
+  <!-- SceneWrapperを利用してアニメーション管理 -->
+  <SceneWrapper>
+    <div 
+      ref="fireworkContainer"
+      class="firework-container"
+    />
+  </SceneWrapper>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import * as THREE from "three";
 import { gsap } from "gsap";
+import SceneWrapper from "./SceneWrapper.vue"; // SceneWrapperをインポート
 
 export default defineComponent({
   name: "FireworkScene",
+  components: { SceneWrapper }, // SceneWrapperを登録
   setup() {
     const fireworkContainer = ref<HTMLDivElement | null>(null);
 
