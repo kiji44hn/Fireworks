@@ -1,7 +1,6 @@
 <template>
   <div class="text-overlay">
     <p>願いを込めて</p>
-    <p>いつまでも続く風景</p>
   </div>
 </template>
 
@@ -10,13 +9,13 @@ import { defineComponent, onMounted } from "vue";
 import { gsap } from "gsap";
 
 export default defineComponent({
-  name: "TextOverlay",
+  name: "TextOverlaySceneOne",
   setup() {
     onMounted(() => {
       gsap.fromTo(
         ".text-overlay",
         { opacity: 0 },
-        { opacity: 1, duration: 2, delay: 1 }
+        { opacity: 1, duration: 10, delay: 1 } // ぼんやり浮かび上がる
       );
     });
   },
@@ -33,5 +32,6 @@ export default defineComponent({
   font-family: "Noto Serif JP", serif;
   font-size: 2rem;
   color: #ffffff;
+  opacity: 0; /* 初期状態 */
 }
 </style>

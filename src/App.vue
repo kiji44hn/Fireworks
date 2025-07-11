@@ -20,10 +20,16 @@
       <NightSkyScene v-if="currentScene === 'nightSky'" />
       <FireworkScene v-if="currentScene === 'firework'" />
       <MemoryScene v-if="currentScene === 'memory'" />
-      <TextOverlay v-if="currentScene === 'textOverlay'" />
+      <TextOverlaySceneOne v-if="currentScene === 'textOne'" />
+      <TextOverlaySceneTwo v-if="currentScene === 'textTwo'" />
+      <FinalMessage v-if="currentScene === 'finalMessage'" />
     </div>
 
-    <audio ref="audioElement" src="/fireworks.mp3" loop />
+    <audio
+      ref="audioElement"
+      src="/fireworks.mp3"
+      loop
+    />
   </div>
 </template>
 
@@ -32,7 +38,9 @@ import { defineComponent, ref } from "vue";
 import NightSkyScene from "./components/NightSkyScene.vue";
 import FireworkScene from "./components/FireworkScene.vue";
 import MemoryScene from "./components/MemoryScene.vue";
-import TextOverlay from "./components/TextOverlay.vue";
+import TextOverlaySceneOne from "./components/TextOverlaySceneOne.vue";
+import TextOverlaySceneTwo from "./components/TextOverlaySceneTwo.vue";
+import FinalMessage from "./components/FinalMessage.vue";
 
 export default defineComponent({
   name: "App",
@@ -40,7 +48,9 @@ export default defineComponent({
     NightSkyScene,
     FireworkScene,
     MemoryScene,
-    TextOverlay,
+    TextOverlaySceneOne,
+    TextOverlaySceneTwo,
+    FinalMessage,
   },
   setup() {
     const showModal = ref(true);
@@ -60,7 +70,9 @@ export default defineComponent({
       // シーン切り替えロジック
       setTimeout(() => (currentScene.value = "firework"), 10000); // 10秒後に花火
       setTimeout(() => (currentScene.value = "memory"), 15000); // 15秒後に祭り
-      setTimeout(() => (currentScene.value = "textOverlay"), 50000); // 50秒後にメッセージ
+      setTimeout(() => (currentScene.value = "textOne"), 50000); // 50秒後にメッセージ
+      setTimeout(() => (currentScene.value = "textTwo"), 65000); // 65秒後に2つ目のメッセージ
+      setTimeout(() => (currentScene.value = "finalMessage"), 87000); // 87秒後に最終メッセージ
     };
 
     return {
