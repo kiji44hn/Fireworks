@@ -1,35 +1,22 @@
 <template>
   <div 
-    ref="fireworkContainer"
-    class="firework-container relative"
-  >
-    <!-- 動画を背景として表示 -->
-    <video 
-      autoplay 
-      loop 
-      playsinline 
-      class="absolute top-0 left-0 w-full h-full object-cover"
-    >
-      <source 
-        src="/hanabi.mp4"
-        type="video/mp4"
-      >
-      Your browser does not support the video tag.
-    </video>
-  </div>
+    ref="nightskyContainer"
+    class="nightsky-container"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import * as THREE from "three";
+import { gsap } from "gsap";
 
 export default defineComponent({
-  name: "FireworkScene",
+  name: "NightskyScene",
   setup() {
-    const fireworkContainer = ref<HTMLDivElement | null>(null);
+    const nightskyContainer = ref<HTMLDivElement | null>(null);
 
     onMounted(() => {
-      const container = fireworkContainer.value!;
+      const container = nightskyContainer.value!;
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
         75,
@@ -43,7 +30,7 @@ export default defineComponent({
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
 
-      // Three.jsのエフェクト
+      // 花火の粒子設定
       const geometry = new THREE.BufferGeometry();
       const particleCount = 300;
       const positions = new Float32Array(particleCount * 3);
@@ -55,6 +42,16 @@ export default defineComponent({
       const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
       const particles = new THREE.Points(geometry, material);
       scene.add(particles);
+
+      // GSAPアニメーション
+      gsap.to(particles.position, { y: 5, duration: 2 });
+      gsap.to(particles.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
+        duration: 1,
+        delay: 2,
+      });
 
       const animate = () => {
         requestAnimationFrame(animate);
@@ -69,15 +66,17 @@ export default defineComponent({
       });
     });
 
-    return { fireworkContainer };
+    return {
+      nightskyContainer,
+    };
   },
 });
 </script>
 
 <style scoped>
-.firework-container {
+.nightsky-container {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle, #111, #000);
+  background: radial-gradient(circle, #111, #000); /* 背景を黒に */
 }
 </style>
