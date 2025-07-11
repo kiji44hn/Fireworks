@@ -1,34 +1,26 @@
 <template>
-  <div class="memory-container">
-    <img
-      v-for="(image, index) in images"
-      :key="index"
-      :src="image"
-      class="memory-image w-60 rounded-lg shadow-lg"
-      alt="Memory Image"
-    >
-  </div>
+  <!-- 画像を背景として使用 -->
+  <div class="memory-container" />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { gsap } from "gsap";
 
 export default defineComponent({
   name: "MemoryScene",
   setup() {
-    const images = ref(["/matsuri-hanabi.png"]);
+    const image = ref("/matsuri-hanabi.png"); // 背景用画像
 
     onMounted(() => {
-      gsap.fromTo(
-        ".memory-image",
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.3 }
-      );
+      // `HTMLElement`型にキャスト
+      const container = document.querySelector(".memory-container") as HTMLElement;
+      if (container) {
+        container.style.backgroundImage = `url(${image.value})`; // スタイルプロパティにアクセス可能
+      }
     });
 
     return {
-      images,
+      image,
     };
   },
 });
@@ -36,15 +28,10 @@ export default defineComponent({
 
 <style scoped>
 .memory-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem;
-}
-.memory-image {
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%; /* 画面幅をいっぱいに */
+  height: 100vh; /* 画面高さをいっぱいに */
+  background-size: cover; /* 背景を縦横にいっぱい表示 */
+  background-position: center; /* 中央に配置 */
+  background-repeat: no-repeat; /* 画像を重複表示しない */
 }
 </style>

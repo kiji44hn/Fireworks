@@ -3,12 +3,14 @@
     <!-- 再生ボタン用モーダル -->
     <div v-if="showModal" class="modal">
       <div class="modal-content">
-        <h1 class="text-lg font-bold mb-4">ようこそ、KAの錬金工房へ</h1>
+        <h1 class="modal-title">
+          夜空に咲く光を、あなたと
+        </h1>
         <button
+          class="start-button"
           @click="startExperience"
-          class="start-button px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-400"
         >
-          体験を始める
+          さあ、共に輝こう
         </button>
       </div>
     </div>
@@ -21,11 +23,7 @@
       <TextOverlay v-if="currentScene === 'textOverlay'" />
     </div>
 
-    <audio 
-      ref="audioElement"
-      src="/harunoyokan.mp3"
-      loop
-    />
+    <audio ref="audioElement" src="/fireworks.mp3" loop />
   </div>
 </template>
 
@@ -61,8 +59,8 @@ export default defineComponent({
 
       // シーン切り替えロジック
       setTimeout(() => (currentScene.value = "firework"), 10000); // 10秒後に花火
-      setTimeout(() => (currentScene.value = "memory"), 20000); // 20秒後に祭り
-      setTimeout(() => (currentScene.value = "textOverlay"), 30000); // 30秒後にメッセージ
+      setTimeout(() => (currentScene.value = "memory"), 15000); // 15秒後に祭り
+      setTimeout(() => (currentScene.value = "textOverlay"), 50000); // 50秒後にメッセージ
     };
 
     return {
@@ -91,19 +89,40 @@ export default defineComponent({
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: radial-gradient(circle, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.9));
   z-index: 10;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
   text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-family: "Playfair Display", serif;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .start-button {
+  background: linear-gradient(90deg, rgba(255, 210, 90, 1), rgba(255, 150, 90, 1));
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
 }
 </style>
