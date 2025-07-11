@@ -15,7 +15,14 @@ export default defineComponent({
       // `HTMLElement`型にキャスト
       const container = document.querySelector(".memory-container") as HTMLElement;
       if (container) {
-        container.style.backgroundImage = `url(${image.value})`; // スタイルプロパティにアクセス可能
+        container.style.backgroundImage = `url(${image.value})`; // 背景画像設定
+        container.style.transition = "filter 10s"; // フィルターのトランジション設定
+        container.style.filter = "blur(10px)"; // 初期状態でぼやけた状態
+
+        // ぼやけ解除（アニメーション開始）
+        setTimeout(() => {
+          container.style.filter = "blur(0px)";
+        }, 10000);
       }
     });
 
