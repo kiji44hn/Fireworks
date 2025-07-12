@@ -13,7 +13,7 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:vue/vue3-recommended", // より厳格なルールセットに変更
+    "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended",
   ],
   rules: {
