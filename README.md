@@ -1,24 +1,103 @@
-# my-vue-project
+# Fireworks 🌌🎆
 
-## Project setup
+## プロジェクト概要
+**Fireworks**は、夜空を彩る花火の美しさと懐かしさをテーマにしたインタラクティブなデジタル体験です。このプロジェクトは、視覚的な芸術と感動的な音楽を融合させ、訪れる人の心に響く瞬間を演出します。
+
+夜空、花火、祭り、そしてメッセージシーンを通じて、日本の夏の風情を感じていただける構成です。
+
+## 主な機能と特徴
+- **夜空のシーン**:
+  静寂な夜空に星々が輝き、背景には美しいグラデーションが広がります。
+- **花火のシーン**:
+  大輪の花火が打ち上がり、夜空を鮮やかに彩るインタラクティブなアニメーション。
+- **祭りのシーン**:
+  日本の夏祭りの懐かしい情景と共に、温かみのある演出が楽しめます。
+- **メッセージシーン**:
+  徐々に浮かび上がるメッセージが心に響き、最後には明瞭なメッセージで締めくくります。
+
+## 使用技術
+- **Vue.js**:
+  コンポーネントベースのフレームワークで、動的なインターフェースを構築。
+- **Three.js**:
+  WebGLを活用した星や花火のリアルな表現。
+- **GSAP**:
+  スムーズなアニメーションを実現。
+- **Tailwind CSS**:
+  モダンでレスポンシブなデザイン。
+
+## 経験と学び
+このプロジェクトでは、以下のスキルを向上させることができました:
+- **創造力の追求**:
+  ビジュアルとテーマの調和を目指した演出。
+- **技術の統合**:
+  Three.jsとGSAPによるダイナミックな表現の実現。
+- **ユーザー体験**:
+  一貫性あるシーンの切り替えと視覚的感動を追求。
+
+## 🚀 使用方法
+
+### リポジトリのクローン
+まず、リポジトリをクローンしてください：
+```bash
+git clone https://github.com/kiji44hn/Fireworks.git
 ```
+
+## 必要な依存関係をインストール
+プロジェクトディレクトリに移動し、依存関係をインストールします：
+
+```bash
+cd Fireworks
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## ローカルサーバーで起動
+以下のコマンドで開発サーバーを起動し、ひと夏の体験を始めましょう！:
+```bash
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+## プロダクションビルド
+本番環境用に最適化されたファイルをビルドします：
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
+## 📁 ディレクトリ構造
+
 ```
-npm run lint
+Fireworks/
+├── blender/              # モデリング用ファイル
+├── public/               # 静的ファイル
+├── src/                  # ソースコード
+│   ├── assets/           # 画像やアイコン
+│   ├── components/       # Vueコンポーネント
+├── videos/               # 動画ファイル/Premiere Proプロジェクトファイル
+├── package.json          # プロジェクト設定と依存関係
+└── vue.config.js        # Vue-Cli設定
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## ✨ 特徴的なコンポーネント
+
+- NightSkyScene.vue: 
+- FireworkScene.vue: 
+- MemoryScene.vue: 
+- TextOverlaySceneOne.vue: 
+- TextOverlaySceneTwo.vue: 
+- FinalMessage.vue: 
+
+## クレジット
+
+```
+音楽: 甘茶の音楽工房 Springin Tairaya Komori
+デザインと開発: あなた自身の情熱とスキルがこのプロジェクトの成功を支えました。👏
+```
+
+## 🖋️ 著者情報
+
+- 名前: KA
+- テーマ: 花火と祭りの体験演出
+- **連絡先**: [kiji44hn](https://github.com/kiji44hn)
+
+## 📜 ライセンス
+このプロジェクトは [MIT License](./LICENSE) のもとで公開されています。
