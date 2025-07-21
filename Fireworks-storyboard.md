@@ -7,7 +7,7 @@
 - まだ全ての粒子が昇り切る前に、視点が次のシーンへと切り替わり、物語の焦点が新たに定まる。
 
 ### アニメーション:
-![シーン1のGIF](./assets/gif/scene1-night-sky.gif)
+![シーン1のGIF](./src/assets/gif/scene1-night-sky.gif)
 1. **粒子の立ち昇り**:
 - 地上から星々が湧き上がるように天へ昇る。
 - 粒子は光を放ちながら緩やかに加速し、12秒目以降も続く動きで生命の息吹を象徴。
@@ -29,7 +29,7 @@
 - 光の軌跡と破裂音が視線と感動を引きつける。
 
 ### アニメーション:
-![シーン2のGIF](./assets/gif/scene2-fireworks.gif)
+![シーン2のGIF](./src/assets/gif/scene2-fireworks.gif)
 - 花火の動き: 高速の小花火とゆっくり開く大花火が交互に打ち上がる。
 - 爆発エフェクト: 半径300px程度で鮮やかに広がり、約2秒で消失。
 - サウンド: 花火の破裂音が力強く響き、背景には祭り囃子のリズムが追加。
@@ -44,7 +44,7 @@
 - 背景がゆっくりともやを抜け、祭りの男女が見え始める。
 
 ### アニメーション:
-![シーン3のGIF](./assets/gif/scene3-memory.gif)
+![シーン3のGIF](./src/assets/gif/scene3-memory.gif)
 1. **背景のもやの変化**:
 - 最初の15秒間、背景がもやで覆われている。
 - 徐々にもやが薄れ、夜店や祭りの風景がぼんやり浮かび上がる。
@@ -70,9 +70,9 @@
 - 「夜空に咲いた一瞬の光が、心に暖かい記憶を刻みますように。」といった言葉が際立ち、一つひとつのメッセージが深く印象に残る。
 
 ### アニメーション:
-![シーン4のGIF1](./assets/gif/scene4-message.gif)
-![シーン4のGIF2](./assets/gif/scene4-message2.gif)
-![シーン4のGIF3](./assets/gif/scene4-message3.gif)
+![シーン4のGIF1](./src/assets/gif/scene4-message.gif)
+![シーン4のGIF2](./src/assets/gif/scene4-message2.gif)
+![シーン4のGIF3](./src/assets/gif/scene4-message3.gif)
 1. **メッセージの表示**:
 - メッセージは約5秒かけて徐々に明るさを増しながら中央に浮かび上がる。
 - 表示中は動きを持たず、文字の静けさを強調。
